@@ -96,3 +96,25 @@ if sys.version >= "2.5":
                 return safename_encode(self.buffer, errors=self.errors)
             else:
                 return ""
+
+    class SafenameIncrementalDecoder(codecs.IncrementalDecoder):
+        """Incremental decoder for codec ``safename``.
+        """
+
+        def __init__(self, errors="strict"):
+            """Constructor.
+            """
+            if errors != "strict":
+                raise UnicodeError(u"Unsupported error handling: %s" % errors)
+
+            codecs.IncrementalDecoder.__init__(self, errors)
+
+        def decode(self, string, final=False):
+            """Decode a string with codec ``safename``.
+            """
+            self.buffer += string
+
+            if final:
+                return safename_decode(self.buffer, errors=self.errors)
+            else:
+                return ""
