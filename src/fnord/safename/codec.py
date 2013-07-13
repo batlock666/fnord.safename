@@ -124,3 +124,9 @@ class SafenameStreamReader(SafenameCodec, codecs.StreamReader):
     """Stream-reader for codec ``safename``.
     """
     pass
+
+
+class SafenameStreamWriter(SafenameCodec, codecs.StreamWriter):
+    """Stream-writer for codec ``safename``.
+    """
+    pass
