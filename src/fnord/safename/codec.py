@@ -1,4 +1,5 @@
 import codecs
+import sys
 
 from fnord.safename.handler import Handler, HandlerChain
 
@@ -71,3 +72,27 @@ class SafenameCodec(codecs.Codec):
         """Decode a string with codec ``safename``.
         """
         return safename_decode(string, errors=errors)
+
+if sys.version >= "2.5":
+
+    class SafenameIncrementalEncoder(codecs.IncrementalEncoder):
+        """Incremental encoder for codec ``safename``.
+        """
+
+        def __init__(self, errors="strict"):
+            """Constructor.
+            """
+            if errors != "strict":
+                raise UnicodeError(u"Unsupported error handling: %s" % errors)
+
+            codecs.IncrementalEncoder.__init__(self, errors)
+
+        def encode(self, string, final=False):
+            """Encode a string with codec ``safename``.
+            """
+            self.buffer += string
+
+            if final:
+                return safename_encode(self.buffer, errors=self.errors)
+            else:
+                return ""
