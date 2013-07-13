@@ -130,3 +130,28 @@ class SafenameStreamWriter(SafenameCodec, codecs.StreamWriter):
     """Stream-writer for codec ``safename``.
     """
     pass
+
+
+def safename_search(encoding):
+    """Return the codec ``safename``.
+    """
+    if encoding == "safename":
+        if sys.version >= "2.5":
+            return codecs.CodecInfo(
+                name="safename",
+                encode=safename_encode,
+                decode=safename_decode,
+                incrementalencoder=SafenameIncrementalEncoder,
+                incrementaldecoder=SafenameIncrementalDecoder,
+                streamwriter=SafenameStreamWriter,
+                streamreader=SafenameStreamReader,
+            )
+        else:
+            return (
+                safename_encode,
+                safename_decode,
+                SafenameStreamReader,
+                SafenameStreamWriter,
+            )
+    else:
+        return None
