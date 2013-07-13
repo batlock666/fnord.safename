@@ -1,3 +1,5 @@
+import codecs
+
 from fnord.safename.handler import Handler, HandlerChain
 
 
@@ -54,3 +56,18 @@ def safename_decode(string, errors="strict"):
         return _safename_decode_chain(string), len(string)
     except UnicodeError as error:
         raise UnicodeDecodeError(error.args[0])
+
+
+class SafenameCodec(codecs.Codec):
+    """Codec ``safename``.
+    """
+
+    def encode(self, string, errors="strict"):
+        """Encode a string with codec ``safename``.
+        """
+        return safename_encode(string, errors=errors)
+
+    def decode(self, string, errors="strict"):
+        """Decode a string with codec ``safename``.
+        """
+        return safename_decode(string, errors=errors)
