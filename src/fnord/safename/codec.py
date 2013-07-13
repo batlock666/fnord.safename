@@ -118,3 +118,9 @@ if sys.version >= "2.5":
                 return safename_decode(self.buffer, errors=self.errors)
             else:
                 return ""
+
+
+class SafenameStreamReader(SafenameCodec, codecs.StreamReader):
+    """Stream-reader for codec ``safename``.
+    """
+    pass
