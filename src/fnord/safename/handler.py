@@ -21,3 +21,29 @@ class Handler(object):
             head = self.handle(match.group("head"))
             tail = match.group("tail")
             return head, tail
+
+
+class HandlerChain(object):
+    """Chain of string-handlers.
+    """
+
+    def __init__(self, *args):
+        """Constructor.
+        """
+        self.handlers = list(args)
+
+    def __call__(self, string):
+        """Callable.
+        """
+        result = ""
+        while (string):
+            for handler in self.handlers:
+                head, tail = handler(string)
+                if head:
+                    result += head
+                    string = tail
+                    break
+            else:
+                raise UnicodeError(u"Can't handle string: %s" % string)
+
+        return result
