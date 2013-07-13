@@ -1,1 +1,4 @@
-# This package may contain traces of nuts
+import fnord.safename.codec
+
+# make pyflakes happy
+fnord.safename.codec

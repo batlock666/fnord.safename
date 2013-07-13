@@ -155,3 +155,5 @@ def safename_search(encoding):
             )
     else:
         return None
+
+codecs.register(safename_search)
