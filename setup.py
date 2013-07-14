@@ -37,7 +37,7 @@ setup(name='fnord.safename',
           'setuptools',
           # -*- Extra requirements: -*-
       ],
-      entry_points="""
-      # -*- Entry points: -*-
-      """,
+      entry_points={
+          "console_scripts": ["safename = fnord.safename.script:safename"],
+      },
       )

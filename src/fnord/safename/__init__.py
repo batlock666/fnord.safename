@@ -1,4 +1,7 @@
 import fnord.safename.codec
 
 # make pyflakes happy
-fnord.safename.codec
+try:
+    fnord.safename.codec
+except:
+    pass
