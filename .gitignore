@@ -1,0 +1,11 @@
+# vim
+*~
+*.swp
+
+# python
+*.py[co]
+
+# package
+build/
+dist/
+*.egg-info/
