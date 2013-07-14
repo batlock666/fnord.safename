@@ -21,7 +21,13 @@ setup(name='fnord.safename',
       # Get more strings from
       # http://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
+        "Development Status :: 2 - Pre-Alpha",
+        "Intended Audience :: Advanced End Users",
+        "License :: OSI Approved :: GNU General Public License (GPL)",
+        "Operating System :: OS Independent",
         "Programming Language :: Python",
+        "Topic :: System :: Storage :: File Management",
+        "User Interface :: Textual :: Command-line",
         ],
       keywords='codec filename',
       author='Bert Vanderbauwhede',
