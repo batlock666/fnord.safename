@@ -49,6 +49,9 @@ def safename():
             new = os.path.join(directory, filename.encode("safename"))
         elif options.action == "decode":
             new = os.path.join(directory, filename.decode("safename"))
+        else:
+            print u"action is missing"
+            return
 
         if options.verbose:
             print u"renaming \"%s\" to \"%s\"" % (path, new)
