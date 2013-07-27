@@ -61,6 +61,9 @@ def safename():
             print u"action is missing"
             return
 
+        if path == new:
+            continue
+
         if options.verbose:
             print u"renaming \"%s\" to \"%s\"" % (path, new)
 
