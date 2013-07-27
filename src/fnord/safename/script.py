@@ -46,7 +46,11 @@ def safename():
         directory, filename = os.path.split(path)
 
         if options.action == "encode":
-            new = os.path.join(directory, filename.encode("safename"))
+            try:
+                new = os.path.join(directory, filename.encode("safename"))
+            except UnicodeEncodeError:
+                print u"can't rename \"%s\"" % path
+                continue
         elif options.action == "decode":
             try:
                 new = os.path.join(directory, filename.decode("safename"))
