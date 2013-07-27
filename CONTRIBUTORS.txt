@@ -1,1 +1,4 @@
-Bert Vanderbauwhede, Author
+Contributors
+============
+
+Bert Vanderbauwhede <batlock666@gmail.com>, Author
