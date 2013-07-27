@@ -55,8 +55,9 @@ def safename_decode(string, errors="strict"):
 
     try:
         return _safename_decode_chain(string), len(string)
-    except UnicodeError as error:
-        raise UnicodeDecodeError(error.args[0])
+    except UnicodeError:
+        raise UnicodeDecodeError(
+            "safename", "", 0, len(string), "Can't decode string")
 
 
 class SafenameCodec(codecs.Codec):
