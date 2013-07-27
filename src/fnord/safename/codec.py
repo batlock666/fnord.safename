@@ -43,8 +43,9 @@ def safename_encode(string, errors="strict"):
 
     try:
         return _safename_encode_chain(string), len(string)
-    except UnicodeError as error:
-        raise UnicodeEncodeError(error.args[0])
+    except UnicodeError:
+        raise UnicodeEncodeError(
+            "safename", u"", 0, len(string), "Can't encode string")
 
 
 def safename_decode(string, errors="strict"):
