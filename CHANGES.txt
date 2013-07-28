@@ -1,6 +1,16 @@
 Changelog
 =========
 
+0.2 (2013-07-28)
+----------------
+
+- Fix handling of exceptions [Bert Vanderbauwhede]
+- Clean up and expand readme [Bert Vanderbauwhede]
+- Change license to LGPL [Bert Vanderbauwhede]
+- Add tests [Bert Vanderbauwhede]
+- Add buildout [Bert Vanderbauwhede]
+
+
 0.1 (2013-07-14)
 ----------------
 
