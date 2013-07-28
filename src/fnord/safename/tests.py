@@ -48,3 +48,6 @@ class SafenameCodecTestCase(unittest.TestCase):
         self.assertEqual("spam_eggs".decode("safename"), "spam eggs")
         self.assertEqual("spam___eggs".decode("safename"), "spam   eggs")
         self.assertEqual("sp(e0)m".decode("safename"), u"spàm")
+
+if __name__ == '__main__':
+    unittest.main()
