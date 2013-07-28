@@ -50,4 +50,5 @@ Remarks
 =======
 
 Based on the module ``safefilename`` from Torsten Bronger's
-`Bobcat Project <https://launchpad.net/bobcat>`_.
+`Bobcat project <https://launchpad.net/bobcat>`_.  The implementation is my
+own.
