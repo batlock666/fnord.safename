@@ -28,3 +28,13 @@ class SafenameCodecTestCase(unittest.TestCase):
         """Set up.
         """
         import fnord.safename
+
+    def test_encode(self):
+        """Test for the encoding.
+        """
+        self.assertEqual("spam".encode("safename"), "spam")
+        self.assertEqual("Spam".encode("safename"), "{s}pam")
+        self.assertEqual("SPAM".encode("safename"), "{spam}")
+        self.assertEqual("spam eggs".encode("safename"), "spam_eggs")
+        self.assertEqual("spam   eggs".encode("safename"), "spam___eggs")
+        self.assertEqual(u"spàm".encode("safename"), "sp(e0)m")
