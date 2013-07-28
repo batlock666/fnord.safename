@@ -32,8 +32,23 @@ The script ``safename`` will rename a list of files, by applying the codec
 ``safename`` to the current filenames.
 
 
-Usage
+Codec
 =====
+
+Import the package ``fnord.safename`` to register the codec ``safename``::
+
+    >>> import fnord.safename
+
+Now you can encode and decode strings::
+
+    >>> "Spam".encode("safename")
+    '{s}pam'
+    >>> "{s}pam".decode("safename")
+    'Spam'
+
+
+Script
+======
 
 ::
 
