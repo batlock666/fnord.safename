@@ -32,6 +32,18 @@ The script ``safename`` will rename a list of files, by applying the codec
 ``safename`` to the current filenames.
 
 
+Installation
+============
+
+Install the distribution from source::
+
+    $ python setup.py install
+
+Or install with ``easy_install``::
+
+    $ easy_install fnord.safename
+
+
 Codec
 =====
 
