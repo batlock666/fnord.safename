@@ -23,4 +23,8 @@ import unittest
 class SafenameCodecTestCase(unittest.TestCase):
     """Test-case for codec ``safename``.
     """
-    pass
+
+    def setUp(self):
+        """Set up.
+        """
+        import fnord.safename
