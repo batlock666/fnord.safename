@@ -16,3 +16,11 @@
 #
 # You should have received a copy of the GNU Lesser General Public License
 # along with fnord.safename.  If not, see <http://www.gnu.org/licenses/>.
+
+import unittest
+
+
+class SafenameCodecTestCase(unittest.TestCase):
+    """Test-case for codec ``safename``.
+    """
+    pass
