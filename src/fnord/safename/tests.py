@@ -38,3 +38,13 @@ class SafenameCodecTestCase(unittest.TestCase):
         self.assertEqual("spam eggs".encode("safename"), "spam_eggs")
         self.assertEqual("spam   eggs".encode("safename"), "spam___eggs")
         self.assertEqual(u"spàm".encode("safename"), "sp(e0)m")
+
+    def test_decode(self):
+        """Test for the decoding.
+        """
+        self.assertEqual("spam".decode("safename"), "spam")
+        self.assertEqual("{s}pam".decode("safename"), "Spam")
+        self.assertEqual("{spam}".decode("safename"), "SPAM")
+        self.assertEqual("spam_eggs".decode("safename"), "spam eggs")
+        self.assertEqual("spam___eggs".decode("safename"), "spam   eggs")
+        self.assertEqual("sp(e0)m".decode("safename"), u"spàm")
