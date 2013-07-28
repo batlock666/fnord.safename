@@ -9,3 +9,9 @@
 build/
 dist/
 *.egg-info/
+
+# buildout
+.installed.cfg
+bin/
+eggs/
+develop-eggs/
