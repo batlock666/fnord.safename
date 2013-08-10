@@ -5,6 +5,7 @@ Changelog
 ----------------
 
 - Add option ``--recursive`` to the script [Bert Vanderbauwhede]
+- Synchronize documentation for options [Bert Vanderbauwhede]
 
 
 0.2 (2013-07-28)

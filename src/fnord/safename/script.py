@@ -40,20 +40,20 @@ def safename():
     """
     parser = optparse.OptionParser()
     parser.add_option(
-        "-e",
-        "--encode",
-        action="store_const",
-        dest="action",
-        const="encode",
-        help="Encode filenames",
-    )
-    parser.add_option(
         "-d",
         "--decode",
         action="store_const",
         dest="action",
         const="decode",
-        help="Decode filenames",
+        help="decode from safe filenames for the given files",
+    )
+    parser.add_option(
+        "-e",
+        "--encode",
+        action="store_const",
+        dest="action",
+        const="encode",
+        help="encode to safe filenames for the given files",
     )
     parser.add_option(
         "-r",
@@ -61,7 +61,7 @@ def safename():
         action="store_true",
         dest="recursive",
         default=False,
-        help="Rename files recursively",
+        help="decode or encode filenames recursively",
     )
     parser.add_option(
         "-t",
@@ -69,7 +69,7 @@ def safename():
         action="store_true",
         dest="test",
         default=False,
-        help="Don't rename files",
+        help="don't rename the files",
     )
     parser.add_option(
         "-v",
@@ -77,7 +77,7 @@ def safename():
         action="store_true",
         dest="verbose",
         default=False,
-        help="Show more information",
+        help="print out every renaming operation",
     )
 
     options, paths = parser.parse_args()
