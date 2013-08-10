@@ -67,10 +67,11 @@ Script
     safename [-d|--decode] [-t|--test] [-v|--verbose] [FILE ...]
     safename [-e|--encode] [-t|--test] [-v|--verbose] [FILE ...]
 
---decode, -d    Decode the safe filenames for the given files.
---encode, -e    Encode to safe filenames for the given files.
---test, -t      Don't rename the files.
---verbose, -v   Print out every renaming operation.
+--decode, -d     Decode the safe filenames for the given files.
+--encode, -e     Encode to safe filenames for the given files.
+--recursive, -r  Decode or encode filenames recursively.
+--test, -t       Don't rename the files.
+--verbose, -v    Print out every renaming operation.
 
 
 Remarks

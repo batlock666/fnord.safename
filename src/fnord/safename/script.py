@@ -22,6 +22,19 @@ import os
 import os.path
 
 
+def _expand_paths(recursive, paths):
+    """Expand all the paths, if necessary.
+    """
+    for path in paths:
+        if recursive and os.path.isdir(path):
+            for (dirpath, dirnames, filenames) in os.walk(path, topdown=False):
+                for dirname in dirnames:
+                    yield os.path.join(dirpath, dirname)
+                for filename in filenames:
+                    yield os.path.join(dirpath, filename)
+        yield path
+
+
 def safename():
     """Script to rename files using codec ``safename``.
     """
@@ -43,6 +56,14 @@ def safename():
         help="Decode filenames",
     )
     parser.add_option(
+        "-r",
+        "--recursive",
+        action="store_true",
+        dest="recursive",
+        default=False,
+        help="Rename files recursively",
+    )
+    parser.add_option(
         "-t",
         "--test",
         action="store_true",
@@ -59,7 +80,7 @@ def safename():
     )
 
     options, paths = parser.parse_args()
-    for path in paths:
+    for path in _expand_paths(options.recursive, paths):
         path = path.decode("utf-8")
         path = os.path.normpath(path)
         directory, filename = os.path.split(path)

@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.3 (2013-07-10)
+----------------
+
+- Add option ``--recursive`` to the script [Bert Vanderbauwhede]
+
+
 0.2 (2013-07-28)
 ----------------
 
