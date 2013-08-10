@@ -105,12 +105,12 @@ def safename():
         if path == new:
             continue
 
+        if options.verbose:
+            print u"renaming \"%s\" to \"%s\"" % (path, new)
+
         if not options.test:
             try:
                 os.rename(path, new)
             except OSError:
                 print u"can't rename \"%s\"" % path
                 continue
-
-        if options.verbose:
-            print u"renaming \"%s\" to \"%s\"" % (path, new)
