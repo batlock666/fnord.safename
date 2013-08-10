@@ -76,6 +76,7 @@ def safename():
         "--verbose",
         action="store_true",
         dest="verbose",
+        default=False,
         help="Show more information",
     )
 
