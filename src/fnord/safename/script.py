@@ -90,16 +90,16 @@ def safename():
             try:
                 new = os.path.join(directory, filename.encode("safename"))
             except UnicodeEncodeError:
-                print u"can't encode \"%s\"" % path
+                print u"safename: error: can't encode \"%s\"" % path
                 continue
         elif options.action == "decode":
             try:
                 new = os.path.join(directory, filename.decode("safename"))
             except UnicodeDecodeError:
-                print u"can't decode \"%s\"" % path
+                print u"safename: error: can't decode \"%s\"" % path
                 continue
         else:
-            print u"action is missing"
+            print u"safename: error: action is missing"
             return
 
         if path == new:
@@ -112,5 +112,5 @@ def safename():
             try:
                 os.rename(path, new)
             except OSError:
-                print u"can't rename \"%s\"" % path
+                print u"safename: error: can't rename \"%s\"" % path
                 continue
