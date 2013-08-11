@@ -39,6 +39,7 @@ setup(name='fnord.safename',
       install_requires=[
           'setuptools',
           # -*- Extra requirements: -*-
+          'fnord.easycodec',
       ],
       entry_points={
           "console_scripts": ["safename = fnord.safename.script:safename"],
