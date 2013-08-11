@@ -1,4 +1,4 @@
 Contributors
 ============
 
-Bert Vanderbauwhede <batlock666@gmail.com>, Author
+- Bert Vanderbauwhede <batlock666@gmail.com>, Author
