@@ -1,7 +1,14 @@
 Changelog
 =========
 
-0.3 (2013-07-10)
+
+0.4 (2013-08-11)
+----------------
+
+- Refactor code to use package ``fnord.easycodec`` [Bert Vanderbauwhede]
+
+
+0.3 (2013-08-10)
 ----------------
 
 - Add option ``--recursive`` to the script [Bert Vanderbauwhede]
