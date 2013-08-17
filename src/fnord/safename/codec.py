@@ -18,56 +18,45 @@
 # along with fnord.safename.  If not, see <http://www.gnu.org/licenses/>.
 
 import codecs
+import re
 
 from fnord.easycodec import encoder, decoder
 from fnord.easycodec import CodecSearch, AUTO
 
-from fnord.safename.handler import Handler, HandlerChain
-
-
-_safename_encode_chain = HandlerChain(
-    Handler(
-        "[A-Z]+",
-        lambda string: "{%s}" % string.lower()),
-    Handler(
-        " +",
-        lambda string: string.replace(" ", "_")),
-    Handler(
-        "[a-z0-9\-+!$%&'@~#.,^]+",
-        lambda string: string),
-    Handler(
-        ".",
-        lambda string: "(%s)" % hex(ord(string))[2:]),
-)
-
-_safename_decode_chain = HandlerChain(
-    Handler(
-        "\{[a-z]+\}",
-        lambda string: string[1:-1].upper()),
-    Handler(
-        "_+",
-        lambda string: string.replace("_", " ")),
-    Handler(
-        "[a-z0-9\-+!$%&'@~#.,^]+",
-        lambda string: string),
-    Handler(
-        "\([0-9a-f]+\)",
-        lambda string: unichr(int(string[1:-1], 16))),
-)
+ENCODE_SCANNER = re.Scanner([
+    (r"[A-Z]+", lambda scanner, token: "{%s}" % token.lower()),
+    (r" +", lambda scanner, token: token.replace(" ", "_")),
+    (r"[a-z0-9\-+!$%&'@~#.,^]+", lambda scanner, token: token),
+    (r".", lambda scanner, token: "(%s)" % hex(ord(token))[2:])])
+DECODE_SCANNER = re.Scanner([
+    (r"\{[a-z]+\}", lambda scanner, token: token[1:-1].upper()),
+    (r"_+", lambda scanner, token: token.replace("_", " ")),
+    (r"[a-z0-9\-+!$%&'@~#.,^]+", lambda scanner, token: token),
+    (r"\([0-9a-f]+\)", lambda scanner, token: unichr(int(token[1:-1], 16)))])
 
 
 @encoder("safename")
 def safename_encode(string):
     """Encoder for codec ``safename``.
     """
-    return _safename_encode_chain(string)
+    scanned = ENCODE_SCANNER.scan(string)
+    if scanned[1]:
+        raise UnicodeEncodeError(
+            "safename", u"", 0, len(string), "Can't encode string"
+        )
+    return u"".join(scanned[0])
 
 
 @decoder("safename")
 def safename_decode(string):
     """Decoder for codec ``safename``.
     """
-    return _safename_decode_chain(string)
+    scanned = DECODE_SCANNER.scan(string)
+    if scanned[1]:
+        raise UnicodeDecodeError(
+            "safename", "", 0, len(string), "Can't decode string"
+        )
+    return u"".join(scanned[0])
 
 codecs.register(CodecSearch(
     "safename", safename_encode, safename_decode,
