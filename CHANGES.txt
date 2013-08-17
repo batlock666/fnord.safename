@@ -2,6 +2,12 @@ Changelog
 =========
 
 
+0.5 (2013-08-17)
+----------------
+
+- Refactor code to use class ``re.Scanner`` [Bert Vanderbauwhede]
+
+
 0.4 (2013-08-11)
 ----------------
 
